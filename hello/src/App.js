@@ -7,7 +7,7 @@ const Age = (props) => {
 class Welcome extends React.Component {
   render() {
     const { name, age } = this.props;
-    const shouldRenderAge = age > 18 && age < 65;
+    const shouldRenderAge = age > 18 && age < 65 && name === "John";
     return (
       <div>
         <p>
