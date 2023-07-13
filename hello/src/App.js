@@ -1,14 +1,25 @@
 import React from "react";
-import Welcome from "./Welcome";
 
-class App extends React.Component {
+const Age = (props) => {
+  return <p>Your age is {props.age}.</p>;
+};
+
+class Welcome extends React.Component {
   render() {
+    const { name, age } = this.props;
     return (
       <div>
-        <Welcome name="Nico" age={30} />
+        <p>
+          Welcome, <strong>{name}</strong>!
+        </p>
+        {age > 18 && <Age age={age} />}
       </div>
     );
   }
 }
 
-export default App;
+Welcome.defaultProps = {
+  name: "Nico",
+};
+
+export default Welcome;
