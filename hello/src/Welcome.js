@@ -9,7 +9,7 @@ class Welcome extends React.Component {
         <p>
           Welcome, <strong>{name}</strong>!
         </p>
-        <Age age={age} />
+        {age && <Age age={age} />}
       </div>
     );
   }
