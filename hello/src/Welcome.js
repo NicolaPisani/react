@@ -2,8 +2,13 @@ import React from "react";
 
 class Welcome extends React.Component {
   render() {
-    const { name } = this.props;
-    return <p>Welcome, {name}!</p>;
+    const { name, age } = this.props;
+    return (
+      <div>
+        <p>Welcome, {name}!</p>
+        <p>Your age is {age}.</p>
+      </div>
+    );
   }
 }
 
