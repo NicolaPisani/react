@@ -6,11 +6,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Welcome to My App</h1>
-        <Counter
-          initialValue={10}
-          incrementAmount={2}
-          incrementInterval={500}
-        />
+        <Counter/>
       </div>
     );
   }
