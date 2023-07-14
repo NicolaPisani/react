@@ -4,16 +4,16 @@ class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      count: props.initialValue || 0,
     };
   }
 
   componentDidMount() {
     this.interval = setInterval(() => {
       this.setState((prevState) => ({
-        count: prevState.count + 1,
+        count: prevState.count + (this.props.incrementAmount || 1),
       }));
-    }, 1000);
+    }, this.props.incrementInterval || 1000);
   }
 
   componentWillUnmount() {
@@ -21,8 +21,7 @@ class Counter extends React.Component {
   }
 
   render() {
-    const { count } = this.state;
-    return <h1>{count}</h1>;
+    return <h1>{this.state.count}</h1>;
   }
 }
 
