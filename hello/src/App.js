@@ -1,26 +1,15 @@
 import React from "react";
+import Counter from "./Counter";
 
-const Age = (props) => {
-  return <p>Your age is {props.age}.</p>;
-};
-
-class Welcome extends React.Component {
+class App extends React.Component {
   render() {
-    const { name, age } = this.props;
-    const shouldRenderAge = age > 18 && age < 65 && name === "John";
     return (
       <div>
-        <p>
-          Welcome, <strong>{name}</strong>!
-        </p>
-        {shouldRenderAge && <Age age={age} />}
+        <h1>Welcome to My App</h1>
+        <Counter />
       </div>
     );
   }
 }
 
-Welcome.defaultProps = {
-  name: "Nico",
-};
-
-export default Welcome;
+export default App;
