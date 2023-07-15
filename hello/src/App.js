@@ -1,12 +1,17 @@
 import React from "react";
-import InteractiveWelcome from "./InteractiveWelcome";
+import Login from "./Login";
 
 class App extends React.Component {
+  handleLogin = (credentials) => {
+    
+    console.log("Login:", credentials);
+  };
+
   render() {
     return (
       <div>
-        <h1>Welcome to My App</h1>
-        <InteractiveWelcome />
+        <h1>App di Login</h1>
+        <Login onLogin={this.handleLogin} />
       </div>
     );
   }
