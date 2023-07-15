@@ -7,6 +7,10 @@ class UncontrolledLogin extends React.Component {
     this.passwordRef = React.createRef();
   }
 
+  componentDidMount() {
+    this.usernameRef.current.focus();
+  }
+
   handleLogin = () => {
     const username = this.usernameRef.current.value;
     const password = this.passwordRef.current.value;
