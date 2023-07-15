@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./Login";
+import UncontrolledLogin from "./UncontrolledLogin";
 
 class App extends React.Component {
   handleLogin = (credentials) => {
@@ -10,7 +10,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>App di Login</h1>
-        <Login onLogin={this.handleLogin} />
+        <UncontrolledLogin onLogin={this.handleLogin} />
       </div>
     );
   }
