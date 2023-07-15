@@ -1,12 +1,12 @@
 import React from "react";
-import ClickCounter from "./ClickCounter";
+import ClickTracker from "./ClickTracker";
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Benvenuto nella mia applicazione</h1>
-        <ClickCounter />
+        <h1>Welcome to My App</h1>
+        <ClickTracker />
       </div>
     );
   }
