@@ -1,12 +1,16 @@
 import React from "react";
-import Login from "./Login";
+import ClickCounter from "./ClickCounter";
 
 class App extends React.Component {
+  handleCounterChange = (value) => {
+    console.log("Counter changed:", value);
+  };
+
   render() {
     return (
       <div>
         <h1>My App</h1>
-        <Login />
+        <ClickCounter onCounterChange={this.handleCounterChange} />
       </div>
     );
   }
