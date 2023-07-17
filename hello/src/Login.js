@@ -1,60 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: "",
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleRememberChange = () => {
+    setRemember(!remember);
+  };
+
+  const handleLogin = () => {
+    const credentials = {
+      username: username,
+      password: password,
+      remember: remember,
     };
-  }
-
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
+    // Effettua l'accesso utilizzando le credenziali
+    console.log(credentials);
   };
 
-  handleLogin = () => {
-    const { onLogin } = this.props;
-    onLogin(this.state);
-  };
-
-  handleReset = () => {
-    this.setState({
-      username: "",
-      password: "",
-    });
-  };
-
-  render() {
-    const { username, password } = this.state;
-    const isDisabled = username === "" || password === "";
-
-    return (
-      <div>
+  return (
+    <div>
+      <h1>Login</h1>
+      <input
+        type="text"
+        value={username}
+        onChange={handleUsernameChange}
+        placeholder="Username"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={handlePasswordChange}
+        placeholder="Password"
+      />
+      <label>
         <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={this.handleInputChange}
-          placeholder="Username"
+          type="checkbox"
+          checked={remember}
+          onChange={handleRememberChange}
         />
-        <br />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={this.handleInputChange}
-          placeholder="Password"
-        />
-        <br />
-        <button onClick={this.handleLogin} disabled={isDisabled}>
-          Login
-        </button>
-        <button onClick={this.handleReset}>Reset</button>
-      </div>
-    );
-  }
-}
+        Remember me
+      </label>
+      <button onClick={handleLogin}>Login</button>
+    </div>
+  );
+};
 
 export default Login;
