@@ -1,19 +1,13 @@
 import React from "react";
-import ClickCounter from "./ClickCounter";
+import Counter from "./Counter";
 
-class App extends React.Component {
-  handleCounterChange = (value) => {
-    console.log("Counter changed:", value);
-  };
-
-  render() {
-    return (
-      <div>
-        <h1>My App</h1>
-        <ClickCounter onCounterChange={this.handleCounterChange} />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <Counter />
+    </div>
+  );
 }
 
 export default App;
