@@ -15,7 +15,7 @@ class TodoList extends React.Component {
 
   handleAddItem = () => {
     const { items, inputValue } = this.state;
-    if (inputValue.trim() !== "") {
+    if (inputValue.trim() != "") {
       const updatedItems = [...items, inputValue];
       this.setState({ items: updatedItems, inputValue: "" });
     }
