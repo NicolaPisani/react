@@ -1,5 +1,7 @@
 import React from "react";
 import LanguageContext from "./LanguageContext";
+import ClickCounter from "./ClickCounter";
+import DisplayLanguage from "./DisplayLanguage";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,6 +26,7 @@ class App extends React.Component {
           <option value="French">French</option>
           <option value="Spanish">Spanish</option>
         </select>
+        <ClickCounter/>
         <LanguageContext.Provider value={selectedLanguage}>
           <DisplayLanguage />
         </LanguageContext.Provider>
