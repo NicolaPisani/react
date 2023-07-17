@@ -1,15 +1,32 @@
 import React from "react";
-import LanguageProvider from "./LanguageProvider";
-import DisplayLanguage from "./DisplayLanguage";
+import LanguageContext from "./LanguageContext";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedLanguage: "English", // Imposta la lingua predefinita
+    };
+  }
+
+  handleChangeLanguage = (event) => {
+    this.setState({ selectedLanguage: event.target.value });
+  };
+
   render() {
+    const { selectedLanguage } = this.state;
+
     return (
       <div>
         <h1>Language App</h1>
-        <LanguageProvider>
+        <select onChange={this.handleChangeLanguage}>
+          <option value="English">English</option>
+          <option value="French">French</option>
+          <option value="Spanish">Spanish</option>
+        </select>
+        <LanguageContext.Provider value={selectedLanguage}>
           <DisplayLanguage />
-        </LanguageProvider>
+        </LanguageContext.Provider>
       </div>
     );
   }
