@@ -21,8 +21,11 @@ class TodoList extends React.Component {
     }
   };
 
-  handleReset = () => {
-    this.setState({ items: [] });
+  handleRemoveItem = (index) => {
+    const { items } = this.state;
+    const updatedItems = [...items];
+    updatedItems.splice(index, 1);
+    this.setState({ items: updatedItems });
   };
 
   render() {
@@ -32,7 +35,12 @@ class TodoList extends React.Component {
       <div>
         <ul>
           {items.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={index}>
+              {item}
+              <button onClick={() => this.handleRemoveItem(index)}>
+                Remove
+              </button>
+            </li>
           ))}
         </ul>
         <input
@@ -41,7 +49,6 @@ class TodoList extends React.Component {
           onChange={this.handleInputChange}
         />
         <button onClick={this.handleAddItem}>Add</button>
-        <button onClick={this.handleReset}>Reset</button>
       </div>
     );
   }
