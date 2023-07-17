@@ -15,10 +15,14 @@ class TodoList extends React.Component {
 
   handleAddItem = () => {
     const { items, inputValue } = this.state;
-    if (inputValue.trim() != "") {
+    if (inputValue.trim() !== "") {
       const updatedItems = [...items, inputValue];
       this.setState({ items: updatedItems, inputValue: "" });
     }
+  };
+
+  handleReset = () => {
+    this.setState({ items: [] });
   };
 
   render() {
@@ -37,6 +41,7 @@ class TodoList extends React.Component {
           onChange={this.handleInputChange}
         />
         <button onClick={this.handleAddItem}>Add</button>
+        <button onClick={this.handleReset}>Reset</button>
       </div>
     );
   }
