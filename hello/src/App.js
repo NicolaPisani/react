@@ -1,13 +1,11 @@
 import React from "react";
-import GithubUser from "./GithubUser";
-import GithubUserList from "./GithubUserList";
+import CounterComponent from "./CounterComponent";
 
 function App() {
   return (
     <div>
-      <h1>Github user</h1>
-      <GithubUser username="Nicola" />
-      <GithubUserList/>
+      <h1>My App</h1>
+      <CounterComponent />
     </div>
   );
 }
