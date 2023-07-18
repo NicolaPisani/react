@@ -1,32 +1,27 @@
 import { useState, useEffect } from "react";
 
-const useGithubUser = (username) => {
+const useGithubUser = () => {
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(
-          `https://api.github.com/users/${username}`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch user data");
-        }
-        const data = await response.json();
-        setUserData(data);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
+  const fetchUserData = async (username) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`https://api.github.com/users/${username}`);
+      if (!response.ok) {
+        throw new Error("Impossibile recuperare i dati dell'utente");
       }
-    };
+      const data = await response.json();
+      setUserData(data);
+      setLoading(false);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    }
+  };
 
-    fetchUserData();
-  }, [username]);
-
-  return { userData, loading, error };
+  return { userData, loading, error, fetchUserData };
 };
 
 export default useGithubUser;
