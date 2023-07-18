@@ -1,11 +1,11 @@
 import React from "react";
-import CounterComponent from "./CounterComponent";
+import LoginForm from "./LoginForm";
 
 function App() {
   return (
     <div>
       <h1>My App</h1>
-      <CounterComponent />
+      <LoginForm />
     </div>
   );
 }
