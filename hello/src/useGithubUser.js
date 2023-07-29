@@ -1,28 +1,38 @@
+import { useEffect, useState } from "react";
 
-import useSWR from "swr";
+export const useGithubUser = (username) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-const fetchUserData = async (username) => {
-  const response = await fetch(`https://api.github.com/users/${username}`);
-  if (!response.ok) {
-    throw new Error("Impossibile recuperare i dati dell'utente");
-  }
-  return response.json();
-};
-
-const useGithubUser = (username) => {
-  const { data, error } = useSWR(username, fetchUserData);
-
-  return {
-    userData: data,
-    loading: !error && !data,
-    error: error,
+  const fetchDataGit = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      if (!username) {
+        setData(null); // Imposta i dati a null se il nome utente è null
+      } else {
+        const response = await fetch(
+          `https://api.github.com/users/${username}`
+        );
+        const data = await response.json();
+        setData(data);
+      }
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    fetchDataGit();
+  }, [username]);
+
+  return [fetchDataGit, data, error, loading];
 };
 
 export default useGithubUser;
-
-
-
 
 // import { useState } from "react";
 
