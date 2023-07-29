@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+} from "react-router-dom";
 import Counter from "./Counter";
 import Home from "./Home";
 import GithubUserList from "./GithubUserList";
@@ -26,7 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/counter" element={<Counter />} />
-          <Route path="/users" element={<GithubUserList />} />
+          <Route path="/users/*" element={<GithubUserList />} />
           <Route path="/users/:username" element={<ShowGithubUser />} />
         </Routes>
       </div>
