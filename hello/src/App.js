@@ -2,9 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Counter from "./Counter";
 import Home from "./Home";
-import GithubUser from "./Esercizio-44/GithubUser";
-import NotFound from "./NotFound";
-
+import GithubUserList from "./GithubUserList";
+import ShowGithubUser from "./ShowGithubUser";
 
 function App() {
   return (
@@ -19,10 +18,7 @@ function App() {
               <Link to="/counter">Counter</Link>
             </li>
             <li>
-              <Link to="/users/NicolaPisani">Username</Link>
-            </li>
-            <li>
-              <Link to="/notFound">Link</Link>
+              <Link to="/users">Users</Link>
             </li>
           </ul>
         </nav>
@@ -30,8 +26,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/counter" element={<Counter />} />
-          <Route path="/users/:username" element={<GithubUser />} />
-          <Route element={<NotFound />}/> 
+          <Route path="/users" element={<GithubUserList />} />
+          <Route path="/users/:username" element={<ShowGithubUser />} />
         </Routes>
       </div>
     </Router>

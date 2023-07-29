@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useGithubUser = (username) => {
+export  const useGithubUser = (username) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,7 +13,10 @@ export const useGithubUser = (username) => {
 
       const data = await response.json();
 
-      setData(data);
+      if (data.status === 404) {
+      } else {
+        setData(data);
+      }
     } catch (error) {
       setError(error);
     } finally {
@@ -21,8 +24,9 @@ export const useGithubUser = (username) => {
     }
   };
 
-  useEffect(() => {
-    fetchDataGit();
-  }, [username]);
+    useEffect(() => {
+        fetchDataGit();
+    },[username])
   return [fetchDataGit, data, error, loading];
 };
+
