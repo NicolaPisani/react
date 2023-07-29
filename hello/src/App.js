@@ -4,7 +4,6 @@ import Counter from "./Counter";
 import Home from "./Home";
 import GithubUser from "./Esercizio-44/GithubUser";
 
-
 function App() {
   return (
     <Router>
@@ -18,7 +17,7 @@ function App() {
               <Link to="/counter">Counter</Link>
             </li>
             <li>
-              <Link to="/users/:username">Username</Link>
+              <Link to="/users/NicolaPisani">Username</Link>
             </li>
           </ul>
         </nav>
