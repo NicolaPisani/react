@@ -34,7 +34,7 @@
 // export default GithubUser;
 
 import React, { useState } from "react";
-import { useGithubUser } from "./useGithubUser";
+import useGithubUser from "./useGithubUser";
 
 export const GithubUser = () => {
   const [username, setUsername] = useState("");
