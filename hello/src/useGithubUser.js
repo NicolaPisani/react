@@ -9,7 +9,7 @@ export const useGithubUser = (username) => {
     try {
       const response = await fetch(`https://api.github.com/users/${username}`);
       const data = await response.json();
-      mutate(data, false); // Update the data without revalidation
+      mutate(data, false); 
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
