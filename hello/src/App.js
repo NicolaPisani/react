@@ -1,19 +1,29 @@
 import React from "react";
-import FilteredList from "./FilteredList";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Counter from "./Counter";
+import Home from "./Home";
 
 function App() {
-  const list = [
-    { id: 1, name: "Nicola", age: 20 },
-    { id: 2, name: "Chiara", age: 15 },
-    { id: 3, name: "Alice", age: 25 },
-    { id: 4, name: "Bob", age: 30 },
-  ];
-
   return (
-    <div>
-      <h1>My App</h1>
-      <FilteredList list={list} />
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/counter">Counter</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/counter" element={<Counter />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
